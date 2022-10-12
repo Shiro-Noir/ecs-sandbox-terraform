@@ -1,0 +1,54 @@
+[
+  {
+    "name" : "ecs-sandbox-api",
+    "image": "653076675421.dkr.ecr.ap-northeast-1.amazonaws.com/ecs-sandbox-api:latest",
+    "essential": true,
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 8000
+      }
+    ],
+    "mountPoints": [
+      {
+        "containerPath": "/tmp",
+        "sourceVolume": "mount-point"
+      }
+    ],
+    "secrets": [],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "python",
+        "awslogs-group": "/ecs/ecs-sandbox-definiton"
+      }
+    }
+  },
+  {
+    "name" : "ecs-sandbox-nginx",
+    "image": "653076675421.dkr.ecr.ap-northeast-1.amazonaws.com/ecs-sandbox-nginx:latest",
+    "essential": true,
+    "portMappings": [
+      {
+        "protocol": "tcp",
+        "containerPort": 80
+      }
+    ],
+    "mountPoints": [
+      {
+        "containerPath": "/tmp",
+        "sourceVolume": "mount-point"
+      }
+    ],
+    "secrets": [],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "python",
+        "awslogs-group": "/ecs/ecs-sandbox-definiton"
+      }
+    }
+  }
+]
