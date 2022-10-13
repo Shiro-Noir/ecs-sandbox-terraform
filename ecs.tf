@@ -40,6 +40,10 @@ resource "aws_ecs_service" "ecs-sandbox-service" {
     ]
   }
 
+    lifecycle {
+	    ignore_changes = [task_definition]
+	}
+
 }
 
 resource "aws_cloudwatch_log_group" "ecs-sandbox-definiton-log-group" {
